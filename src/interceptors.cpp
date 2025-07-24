@@ -24,7 +24,7 @@ bool AuthenticationInterceptor::preProcess(std::string& request) {
     if (std::regex_search(request, match, tokenRegex)) {
         std::string token = match[1];
         if (token == validToken) {
-            std::cout << "[AUTH] Authentication successful" << std::endl;
+            // std::cout << "[AUTH] Authentication successful" << std::endl; // Disabled for HFT
             return true;
         }
     }
@@ -37,7 +37,7 @@ void AuthenticationInterceptor::postProcess(const std::string& request, std::str
     (void)request; // Suppress unused parameter warning
     (void)response; // Suppress unused parameter warning
     // Can add response encryption and other post-processing logic here
-    std::cout << "[AUTH] Post-processing completed" << std::endl;
+    // Disabled for HFT performance
 }
 
 bool RateLimitingInterceptor::preProcess(std::string& request) {

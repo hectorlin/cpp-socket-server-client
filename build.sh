@@ -32,6 +32,15 @@ echo "Compiling simple benchmark..."
 g++ -std=c++11 -Wall -Wextra -O2 -Iinclude -c simple_benchmark.cpp -o obj/simple_benchmark.o
 g++ obj/client.o obj/interceptors.o obj/simple_benchmark.o -o bin/simple_benchmark -pthread
 
+echo "Compiling HFT server..."
+g++ -std=c++11 -Wall -Wextra -O3 -Iinclude -c src/hft_server.cpp -o obj/hft_server.o
+g++ -std=c++11 -Wall -Wextra -O3 -Iinclude -c src/hft_server_main.cpp -o obj/hft_server_main.o
+g++ obj/hft_server.o obj/services.o obj/interceptors.o obj/hft_server_main.o -o bin/hft_server -pthread
+
+echo "Compiling HFT benchmark..."
+g++ -std=c++11 -Wall -Wextra -O3 -Iinclude -c hft_benchmark.cpp -o obj/hft_benchmark.o
+g++ obj/client.o obj/interceptors.o obj/hft_benchmark.o -o bin/hft_benchmark -pthread
+
 echo "Build completed successfully!"
 echo ""
 echo "Usage:"
